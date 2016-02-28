@@ -1,0 +1,29 @@
+   <html>
+       <body>
+         <p>  Les Nouvelles ventes ajoutées par Chef Agence {{ app.user.username }} de Espace TT {{ app.user.espace }} </p> 
+		 
+<table border="1">
+                 <thead>
+                     <tr>
+                          
+                           <td color="blue">Libellé</td>
+                           <td>Quantité</td>
+                            <td>Catégorie</td>
+                           <td>Date</td>
+                          
+                        </tr>
+                      {% for a in vente%}
+                       <tr>
+                          
+                           <td>		{{ a.offrelcle.nom }}</td>
+                            <td>	{{ a.quantite }} </td>
+                           <td>		{{ a.categorie }} </td>
+                          
+                           <td>		{{ a.date|date('d/m/Y') }} </td>
+                          
+                        </tr>
+                        {% endfor %}
+              </thead>
+              </table>
+              </body>
+                   </html>

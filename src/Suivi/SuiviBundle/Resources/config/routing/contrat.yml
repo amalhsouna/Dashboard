@@ -1,0 +1,8 @@
+contrat_ajout:
+    path:     /ajout-contrat/{id}
+    defaults: { _controller: "SuiviVenteBundle:Contrat:Ajoutcontrat" }
+facture_ajout:
+    path:     /ajout-facture
+    defaults: { _controller: "SuiviVenteBundle:Contrat:AjoutFacture" }
+
+    

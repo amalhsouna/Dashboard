@@ -1,0 +1,16 @@
+Suivi\SuiviBundle\Entity\Ventes:
+    properties:
+        quantite:
+            - NotBlank: ~
+            - Type:
+                type: integer
+                message: La valeur {{ value }} n'est pas un type {{ type }} valide.
+Suivi\SuiviBundle\Entity\Contact:
+    properties:
+        prenom:
+            - NotBlank: ~
+            - Length:
+                min: 4
+                max: 50
+                minMessage: "Votre nom doit faire au moins {{ limit }} caractères"
+                maxMessage: "Votre nom ne peut pas être plus long que {{ limit }} caractères"                

@@ -1,0 +1,38 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+<title>Suivi Vente | Dashboard</title>
+
+
+{% include 'SuiviVenteBundle::header.html.twig' %}
+      {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <section class="content-header">
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="alert alert-success">
+     <a href="#" class="close" data-dismiss="alert">&times;</a>
+     Enregistrement effectué avec succées !
+    </div>
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+    {% endif %}
+{% endblock fos_user_content %}
+ </section>
+       </div>
+ 	  </div>
+ 	  </div>
+
+</div>
+
+
+
+ {% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+
+{% endblock %}

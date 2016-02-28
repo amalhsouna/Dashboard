@@ -1,0 +1,66 @@
+suivi_vente_categorie:
+    resource: "@SuiviVenteBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+suivi_vente_offres:
+    resource: "@SuiviVenteBundle/Resources/config/routing/offres.yml"
+    prefix:   /offres
+suivi_vente_produit:
+    resource: "@SuiviVenteBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+suivi_vente_contact:
+    resource: "@SuiviVenteBundle/Resources/config/routing/contact.yml"
+    prefix:   /contact
+suivi_contrat:
+    resource: "@SuiviVenteBundle/Resources/config/routing/contrat.yml"
+    prefix:   /contrat
+    
+suivi_vente_index:
+    path:     /index
+    defaults: { _controller: SuiviVenteBundle:Default:index }
+    
+suivi_vente_admin:
+    path:     /
+    defaults: { _controller: SuiviVenteBundle:Default:admin }
+admin_listeadmin:
+    path:     /liste-admin
+    defaults: { _controller: UtilisateurBundle:Default:admin }
+
+admin_supprimeadmin:
+    path:     /supprimeradmin/{id}
+    defaults: { _controller: UtilisateurBundle:Default:supprimeAdmin }
+suivi_vente_chef:
+    path:     /Ajouter-vente
+    defaults: { _controller: SuiviVenteBundle:Default:chef }
+
+lite_vente_chef:
+    path:     /liste-vente
+    defaults: { _controller: SuiviVenteBundle:Default:listesvente }
+oc_global_resultat-resultat1:
+    pattern:  /resultat-vente
+    defaults: { _controller: SuiviVenteBundle:Default:Resultat }
+PDF_categ:
+    path:     /pdf-categories
+    defaults: { _controller:  SuiviVenteBundle:PDF:pdfcat }
+PDF_offre:
+    path:     /pdf-offre
+    defaults: { _controller:  SuiviVenteBundle:PDF:pdfoff }
+PDF_vente:
+    path:     /pdf-vente
+    defaults: { _controller:  SuiviVenteBundle:PDF:pdfvente }
+stat_bar:
+    pattern:  /chartbar
+    defaults: { _controller: SuiviVenteBundle:Chart:profitsHistory }
+stat_admin:
+    pattern:  /chartline
+    defaults: { _controller: SuiviVenteBundle:Chart:Ventestat }
+recette_liste:
+    path:     /liste-recette
+    defaults: { _controller: SuiviVenteBundle:Recette:index }
+    
+recette_resultat:
+    pattern:  /resultat-recette
+    defaults: { _controller: SuiviVenteBundle:Recette:Resultat }
+
+pie_chart:
+    pattern:  /pie-chart
+    defaults: { _controller: SuiviVenteBundle:Chart:piechart }

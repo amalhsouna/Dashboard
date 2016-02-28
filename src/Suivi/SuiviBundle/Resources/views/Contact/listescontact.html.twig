@@ -1,0 +1,99 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+
+    <title>Suivi Vente | Dashboard</title>
+
+    {% include 'SuiviVenteBundle::header.html.twig' %}
+    {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Liste des Contacts
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                <li class="active">Contact</li>
+                <li class="active">Liste des contacts</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <div class="box-body">
+
+                            <div class="panel-body">
+
+
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Logo</th>
+                                            <th>Nom de l'entreprise</th>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Email</th>
+                                            <th>Adresse</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for a in contact%}
+
+                                            <tr>
+                                                <td><a href="{{path('contact_detail',{'id': a.id})}}"><img src="{{ asset('uploads/img/'~ a.image.url )}}"  alt="" width="100"></a></td>
+                                                <td>{{ a.Nomentreprise }}</td>
+                                                <td>		{{ a.Nom }}</td>
+                                                <td>		{{ a.Prenom }}</td>
+                                                <td>	{{ a.Email}} </td>
+                                                <td>	{{ a.adresse }} </td>
+                                                <td>	
+                                                {% if a.status=="1" %}
+                                               <span class="label label-success"> Abonné </span>
+                                        {%else%}
+                                        <span class="label label-danger"> Non abonné </span>
+                                        {% endif %}
+                                                 </td>
+                                                <td>
+
+                                                    
+
+
+                                                    <a href="{{ path('contact_modifier', { 'id': a.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                                                    <a id="iframe" href="{{ path('contrat_ajout', { 'id': a.id }) }}" data-fancybox-type="iframe">Lien vers facture</a>
+                                                 
+                                                </td>
+
+                                            </tr>
+
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+                                <div class="navigation">
+                                    {{ knp_pagination_render(contact) }}
+
+                                </div>
+
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+
+            </div>		  
+
+
+
+
+    </div><!-- ./wrapper -->
+
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="top-content identification">
+        <ul class="bxslider">
+            <li><img src="{{asset('bundles/AccueilTemplate/assets/img/1.jpg')}}" /></li>
+
+            <li><img src="{{asset('bundles/AccueilTemplate/assets/img/2.jpg')}}" /> </li>
+
+        </ul>
+        <div class="inner-bg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Connectez-vous  </h3>
+
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-lock"></i>
+                            </div>
+                        </div>
+                        {% if error %}
+                        <div class="erreur-identification">
+                            <i class="glyphicon glyphicon-remove"></i>
+                            {{ error.messageKey|trans(error.messageData, 'security') }}
+                        </div>
+                        {% endif %}
+                        <div class="form-bottom">
+                        <form action="{{ path("fos_user_security_check") }}" method="post"  class="login-form">
+                           <div class="form-group">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            <label class="sr-only" for="form-username">Username</label>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-username form-control" />
+                             </div>
+                             <div class="form-group">
+                              <label class="sr-only" for="form-password">Password</label>
+                              <input type="password" id="password" name="_password" required="required" class="form-password form-control" />
+                            </div>
+
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me" class="label-remebre">{{ 'security.login.remember_me'|trans }}</label>
+                            <div class="footer">
+                               <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn"/>
+                                </div>
+
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+{% endblock fos_user_content %}

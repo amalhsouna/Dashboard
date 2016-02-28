@@ -1,0 +1,72 @@
+</head>
+<body class="skin-blue">
+<div class="wrapper">
+<header class="main-header">
+    <!-- Logo -->
+    <a href="{{path('suivi_vente_admin')}}" class="logo">
+        <img src="{{asset("bundles/adminTemplate/img/logo2.jpg")}}" class="user-image" alt="User Image"/>
+
+
+    </a>
+
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top" role="navigation">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"> </span>
+        </a>
+
+        
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown user user-menu">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                           <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="user-image" alt="User Image"/>
+                           <span class="hidden-xs">
+                               {% if is_granted('ROLE_CHEF') %} Connecté en tant que Chef espace TT :{% endif %}
+                               {% if is_granted('ROLE_SUPER_ADMIN') %} Administrateur: {% endif %}
+                               {% if is_granted('ROLE_RESPONSABLE') %} Resp_Commercial: {% endif %}
+                               {% if is_granted('ROLE_COMMERCIAL') %} Commercial: {% endif %}
+                               {{ app.user.username }}
+                           </span>
+                        </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                       <li class="user-header">
+
+                            <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" class="img-circle" alt="User Image" />
+
+                            <p>
+                                {{ app.user.username }}
+                                <small>Direction {{ app.user.espace }}</small>
+                            </p>
+                       </li>
+
+
+
+
+                        <!-- Menu Body -->
+
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+
+                            <div class="pull-right">
+                                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Déconnexion</a>
+                            </div>
+							<div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Profil</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+</header>

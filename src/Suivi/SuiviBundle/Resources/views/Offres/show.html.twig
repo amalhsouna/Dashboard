@@ -1,0 +1,93 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+     {% include 'SuiviVenteBundle::header.html.twig' %}
+      {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+          Gestion Offres
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Gestion Offres</li>
+            <li class="active">Lister</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+              
+                <div class="box-header">
+                 
+                  <h3 class="box-title" Fontcolor="bleu">Offre {{ entity.id }}</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+              
+
+                <table class="record_properties">
+                    <tbody>
+                       
+                        <tr>
+                            <th>Nom  :</th>
+                            <td>{{ entity.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description  :</th>
+                            <td>{{ entity.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status  :</th>
+                            <td>{% if entity.status=="1" %}
+                                Active
+                                 {%else%}
+                              Nom active
+                                {% endif %}
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Catégorie  :</th>
+                            <td>{{ entity.categ.nom}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+         <a href="{{ path('offres_edit', { 'id': entity.id }) }}" class="btn-right">
+           <img src="{{asset("bundles/adminTemplate/img/edit.png")}}">
+        </a>
+
+        </br>
+
+        <a href="{{ path('offres') }}" class="next" >
+           <img src="{{asset("bundles/adminTemplate/img/MB__back.png")}}">
+        </a>
+
+
+              </div><!-- /.box -->
+</section>
+ </div>		  
+            
+              
+ <footer class="main-footer">
+     <div class="pull-right hidden-xs">
+          <b>Dashboard Commercial</b> 
+        </div>
+		  
+            
+              
+
+        <strong>Copyright &copy; 2015 <a href="http://www.tunisietelecom.tn/">Tunisie Télécom</a>.</strong>
+      </footer>
+
+    </div><!-- ./wrapper -->
+
+   
+{% endblock %}

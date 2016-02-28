@@ -1,0 +1,14 @@
+contact_ajout:
+    path:     /ajout-contact
+    defaults: { _controller: "SuiviVenteBundle:Contact:Ajoutcontact" }
+
+contact_liste:
+    path:     /liste-contact
+    defaults: { _controller: "SuiviVenteBundle:Contact:Listecontact" }
+contact_detail:
+    path:     /detail-contact/{id}
+    defaults: { _controller: "SuiviVenteBundle:Contact:detailcontact" }	
+contact_modifier:
+    pattern:  /modifier-contact/{id}
+    defaults: {_controller: "SuiviVenteBundle:Contact:modifiercontact"}	
+    

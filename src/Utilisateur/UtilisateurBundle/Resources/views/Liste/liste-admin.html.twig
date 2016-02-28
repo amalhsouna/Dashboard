@@ -1,0 +1,128 @@
+
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+    <title>Suivi Vente | Dashboard</title>
+
+
+</head>
+<body class="skin-blue">
+    <div class="wrapper">
+
+        {% include 'SuiviVenteBundle::header.html.twig' %}
+        {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    Gestion des utilisateurs
+
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('suivi_vente_admin') }}"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                    <li class="active">Gestion utilisateur</li>
+                    <li class="active"> Liste des utilisateurs</li>
+                </ol>
+            </section>
+
+            <!-- Main content -->
+            {% block content %}
+            {%endblock  %}
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box">
+
+                            <div class="box-body filterable">
+                                <div class="panel-heading">
+
+                                    <div class="pull-right">
+                                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                                    </div>
+                                </div>
+
+
+                                <table id="example1" class="table table-bordered table-striped" >
+                                    <thead>
+                                        <tr  class="filters">
+
+
+                                            <th><input type="text" class="form-control" placeholder="Login" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Email" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Rôle" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Espace TT" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="dernier login" disabled></th>
+
+                                            <th></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users %}
+                                            <tr class="active">
+
+
+                                                <td >{{user.username}}</td>
+                                                <td > {{user.email}}</td>
+                                                <td > 
+                                                    {{user.roles[0]}}
+                                                </td>
+                                                <td >{{user.espace}}</td>
+                                                <td >{{user.lastLogin|date('d/m/Y')}}</td>
+
+                                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                                    <td style="width: 50px">
+                                                        <a href="{{path('admin_supprimeadmin',{'id': user.id})}}" onClick="if (!confirm('vous voulez supprimer    ?')) {
+                                                                    return false;
+                                                                }"  name="modal"><img src="{{asset('bundles/adminTemplate/img/delete.jpg')}}" alt="picture" width="30" height="20" /></a>
+
+                                                    </td>
+                                                {% endif %}
+                                            </tr>
+
+
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div class="navigation">
+                                    {{ knp_pagination_render(users) }}
+
+                                </div>
+                                <div class="btn-table">
+                                    
+                                     <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Ajouter Utilisateur</button> 
+                                    <a href="{{ path('PDF_offre') }}"><button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button></a>
+                                    
+                            
+                                </div>
+
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+ 
+
+            </section>
+        </div>
+
+
+        {% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+
+    {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

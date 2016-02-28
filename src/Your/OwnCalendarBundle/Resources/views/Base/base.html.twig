@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar-header.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/bladetestercalendar/css/calendar.css') }}">
+        <link href="{{asset("bundles/adminTemplate/css/datepicker.css")}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset("bundles/adminTemplate/css/style.css")}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset("bundles/adminTemplate/css/bootstrap.min.css")}}" rel="stylesheet" type="text/css" />
+        <!-- Font Awesome Icons -->
+        <link href="{{asset("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")}}" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="{{asset("http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css")}}" rel="stylesheet" type="text/css" />
+        <!-- Morris chart -->
+        <link href="{{asset("bundles/adminTemplate/plugins/morris/morris.css")}}" rel="stylesheet" type="text/css" />
+        <!-- jvectormap -->
+        <link href="{{asset("bundles/adminTemplate/plugins/jvectormap/jquery-jvectormap-1.2.2.css")}}" rel="stylesheet" type="text/css" />
+        <!-- Daterange picker -->
+        <link href="{{asset("bundles/adminTemplate/plugins/daterangepicker/daterangepicker-bs3.css")}}" rel="stylesheet" type="text/css" />
+        <!-- Theme style -->
+        <link href="{{asset("bundles/adminTemplate/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
+        <!-- AdminLTE Skins. Choose a skin from the css/skins
+             folder instead of downloading all of them to reduce the load. -->
+        <link href="{{asset("bundles/adminTemplate/css/skins/_all-skins.min.css")}}" rel="stylesheet" type="text/css" />
+        <link rel="icon" type="image/png" href="{{asset("favicon-32x32.png")}}" sizes="32x32">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" media="all"/>
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" media="all"/>
+    </head>
+    <body>
+            <div class="app">
+                <header class="main-header">
+                    {% block header %}
+                    {% endblock %}
+                </header>
+
+
+                <div class="main-body">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+
+                <footer class="main-footer">
+                    {% block footer %}
+                        <div class="pull-right hidden-xs">
+                            <b>Dashboard Commercial</b>
+                        </div>
+                        <strong>Copyright &copy; 2015 <a href="http://www.tunisietelecom.tn/">Tunisie Télécom</a></strong>
+                    {% endblock %}
+                </footer>
+            </div>
+
+    {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/jquery-1.9.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/bladetestercalendar/js/calendar.js') }}"></script>
+    <script src="{{asset("bundles/adminTemplate/js/jquery-1.11.3.min.js")}}"></script>
+    <script src="{{asset("bundles/adminTemplate/js/bootstrap.min.js")}}" type="text/javascript"></script>
+    <script src="{{asset("bundles/adminTemplate/js/app.min.js")}}" type="text/javascript"></script>
+    <script src="{{asset("bundles/adminTemplate/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{asset("bundles/adminTemplate/js/pages/dashboard2.js")}}" type="text/javascript"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{asset("bundles/adminTemplate/js/demo.js")}}" type="text/javascript"></script>
+    
+   	
+    {% endblock %}
+    </body>
+</html>
+

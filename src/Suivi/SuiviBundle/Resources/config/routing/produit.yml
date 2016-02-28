@@ -1,0 +1,10 @@
+produit_ajout:
+    path:     /ajout-produit
+    defaults: { _controller: "SuiviVenteBundle:Produit:Ajoutproduit" }
+
+produit_liste:
+    path:     /liste-produit
+    defaults: { _controller: "SuiviVenteBundle:Produit:listeproduit" }
+produit_detail:
+    path:     /detail-produit/{id}
+    defaults: { _controller: "SuiviVenteBundle:Produit:detailproduit" }	

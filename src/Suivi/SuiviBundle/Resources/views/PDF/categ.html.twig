@@ -1,0 +1,96 @@
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Liste des catégories</title>
+  <link rel="stylesheet" href="style.css">
+ <link rel="icon" type="image/x-icon" href="{{ asset('favicon-32x32.png') }}" />
+  <script src="script.js"></script>
+</head>
+<body >
+ <div class="bloc-total">
+     
+    <div class="date-jour">{{myEntity}}</div>
+     <div class="bloc-haut">
+        <h1 class="tunise-telecome">Direction Régionale Ben Arous</h1>
+        
+        <img src="C:\wamp\www\DashboardCommercial\web\bundles\adminTemplate\img\tt400.jpg" width="250" height="100" alt="caré" class="img-log" />
+        <div class="clear_both"></div>
+     </div>
+   
+
+<h1 align="center">Liste des catégories </h1>
+<table class="table-pfd" align="center">
+    <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Date création</th>
+
+    </tr>
+{% for c in categorie %}
+    <tr>
+        <td class="large">
+    {{ c.nom}}
+        </td>
+        <td class="large">
+    {{ c.description}}
+        </td>
+        <td class="large">
+    {{ c.dateCreation|date('j-m-Y')}}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+  </div>
+</body>
+</html>
+<style>
+    .bloc-total{
+       
+        padding: 15px;
+    }
+    body{
+         background:graytext;
+    }
+    h2{
+        font-weight:bold;
+        font-size:14px;
+    }
+    h1{
+        font-weight:bold;
+        font-size:17px;
+        display:block;
+     
+        border-bottom: 1px solid #0000FF;
+    }
+    .table-pfd {
+    border-collapse: collapse;
+    display: block;
+    margin: 0 auto;
+    width:500px;
+   }
+
+    .table-pfd, .table-pfd td,.table-pfd th {
+        border: 1px solid black;
+    }
+    .table-pfd td,.table-pfd th{
+        padding: 5px;
+    }
+    .table-pfd .large{
+        width:200px;
+        alignment-adjust:auto;
+    }
+    .bloc-haut{
+        display: block;
+    }
+    .tunise-telecome{
+        float: left;
+    }
+    .img-log{
+        float: right;
+    }
+    .date-jour{
+        display: block;
+        text-align: right;
+        padding: 0 15px;
+    }
+    </style>

@@ -1,0 +1,172 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+  
+    <title>Suivi Vente | Dashboard</title>
+
+      {% include 'SuiviVenteBundle::header.html.twig' %}
+      {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+    <style>
+        /* Global */
+
+
+        img { max-width:100%; }
+
+        a {
+            -webkit-transition: all 150ms ease;
+            -moz-transition: all 150ms ease;
+            -ms-transition: all 150ms ease;
+            -o-transition: all 150ms ease;
+            transition: all 150ms ease;
+        }
+        a:hover {
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE 8 */
+            filter: alpha(opacity=50); /* IE7 */
+            opacity: 0.6;
+            text-decoration: none;
+        }
+
+        .thumbnails li> .fff .caption { background:#D7D5D5 !important; padding:10px }
+        /* Page Header */
+        .page-header {
+            background: #f9f9f9;
+            margin: -30px -40px 40px;
+            padding: 20px 40px;
+            border-top: 4px solid #ccc;
+            color: #999;
+            text-transform: uppercase;
+        }
+        .page-header h3 {
+            line-height: 0.88rem;
+            color: #000;
+        }
+
+
+
+        /* Thumbnail Box */
+        .caption h4 {
+
+            color: #444;
+        }
+        .caption p {
+
+            color: #999;
+        }
+
+
+        /* Carousel Control */
+        .control-box {
+            text-align: right;
+            width: 100%;
+        }
+        .carousel-control{
+            background: #666;
+            border: 0px;
+            border-radius: 0px;
+            display: inline-block;
+            font-size: 34px;
+            font-weight: 200;
+            line-height: 18px;
+            opacity: 0.5;
+            padding: 4px 10px 0px;
+            position: static;
+            height: 30px;
+            width: 15px;
+        }
+        #myCarousel img {
+          width: 178px !important;
+          height: 180px !important;
+    }
+
+
+
+
+
+        /* Mobile Only */
+        @media (max-width: 767px) {
+            .page-header, .control-box {
+                text-align: center;
+            }
+        }
+        @media (max-width: 479px) {
+            .caption {
+                word-break: break-all;
+            }
+        }
+
+
+        li { list-style-type:none;}
+
+        ::selection { background: #ff5e99; color: #FFFFFF; text-shadow: 0; }
+        ::-moz-selection { background: #ff5e99; color: #FFFFFF; }
+
+    </style>
+
+    
+ <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+          Détail des produits
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="glyphicon glyphicon-hand-right"></i> Accueil</a></li>
+            <li class="active">Produit</li>
+            <li class="active">détail des produits</li>
+          </ol>
+        </section>
+<!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+              
+      <div class="box-body">
+            
+                <div class="panel-body">
+
+          <!----partie----->
+                    <div class="container">
+                        <div class="col-xs-12">
+               <div class="carousel slide" id="myCarousel">
+                                        <div class="carousel-inner">
+                             
+								  <div class="cordonner-emplyer">
+								  {% if (produit.image) %}
+                                          <img src="{{ asset('uploads/img/'~produit.image.url) }}" alt="">
+                                      {% else %}
+                                          <img src="http://placehold.it/360x240" alt="">
+                                 {% endif %}
+									  <p><span>Nom:</span>{{ produit.nom }}</p>
+									  <p><span>Déscription:</span>{{ produit.description }}</p>
+									  
+									  
+									  
+									  
+
+								  </div>
+
+
+                                    
+                                        </div>
+
+
+
+                                        <!-- /.control-box -->
+
+                                    </div><!-- /#myCarousel -->
+  </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+	</section>
+	</div>
+
+
+
+{% include 'SuiviVenteBundle::footer.html.twig' %}
+
+    </div><!-- ./wrapper -->
+
+
+    {% endblock %}

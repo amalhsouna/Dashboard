@@ -1,0 +1,82 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+  
+    <title>Suivi Vente | Dashboard</title>
+
+      {% include 'SuiviVenteBundle::header.html.twig' %}
+      {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+    
+    
+ <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+          Détail du contact :{{contact.Nom}}  {{contact.Prenom}}
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="glyphicon glyphicon-hand-right"></i> Accueil</a></li>
+            <li class="active">Contact</li>
+            <li class="active">détail des contact</li>
+          </ol>
+        </section>
+<!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+              
+      <div class="box-body">
+            
+                <div class="panel-body">
+
+          <!----partie----->
+                    <div class="container">
+                        <div class="col-xs-12">
+               <div class="carousel slide" id="myCarousel">
+                                        <div class="carousel-inner">
+                             
+								  <div class="cordonner-contact">
+                             <div class="colonne-gauche">
+								  {% if (contact.image) %}
+                                          <img src="{{ asset('uploads/img/'~contact.image.url) }}" alt="">
+                                      {% else %}
+                                          <img src="http://placehold.it/360x240" alt="">
+                                 {% endif %}
+                                     <span class="blue"><a href="{{path('contact_modifier',{'id': contact.id})}}">Modifier</a></span>
+
+                              </div>
+                                      <p><span>Nom de l'entreprise:</span>{{ contact.Nomentreprise }}</p>
+									  <p><span>Nom:</span>{{ contact.Nom }}</p>
+									  <p><span>Prénom:</span>{{ contact.Prenom }}</p>
+									  <p><span>Email:</span>{{ contact.Email }}</p>
+									  <p><span>Téléphone:</span>{{ contact.tel }}</p>
+
+                                <div class="clear_both"></div>
+
+									  </div>
+
+
+                                    
+                                        </div>
+
+
+
+                                        <!-- /.control-box -->
+
+                                    </div><!-- /#myCarousel -->
+  </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+	</section>
+	</div>
+
+
+
+{% include 'SuiviVenteBundle::footer.html.twig' %}
+
+    </div><!-- ./wrapper -->
+
+
+    {% endblock %}

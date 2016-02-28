@@ -1,0 +1,85 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+
+    <title>Suivi Vente | Dashboard</title>
+
+    {% include 'SuiviVenteBundle::header.html.twig' %}
+    {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Liste des ventes
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+                <li class="active">Ventes</li>
+                <li class="active">Liste des ventes</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <div class="box-body">
+
+                            <div class="panel-body">
+                                <form action={{path('oc_global_resultat-resultat1')}} method="POST">
+
+                                    <div class="control-group rech">
+                                        {{ form_widget(form) }}
+
+                                    </div>
+                                    <div class="btn btn3">
+                                        <button type="submit" class="btn btnrech"></button>
+                                    </div>
+                                </form>
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+
+                                            <th>Offres</th>
+                                            <th>Quantité</th>
+
+                                            <th>Date</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for a in entities %}
+                                            <tr>
+
+                                                <td >{{ a.offres.nom }}</td>
+                                                <td>	{{ a.quantite }} </td>
+
+                                                <td>		{{ a.date|date('Y/m/d') }} </td>
+
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>           
+                                <div class="navigation">
+                                    {{ knp_pagination_render(entities) }}
+
+                                </div>
+                                <a href="{{ path('PDF_vente') }}" class="glyphicon glyphicon-download-alt pdf" TARGET='_blank'> </a> 
+                            </div><!-- /.box-body -->
+                        </div><!-- /.box -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+        </section>
+    </div>		  
+
+
+    {% include 'SuiviVenteBundle::footer.html.twig' %}
+
+</div><!-- ./wrapper -->
+
+
+{% endblock %}

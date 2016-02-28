@@ -1,0 +1,162 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+
+    <title>Suivi Vente | Dashboard</title>
+
+    {% include 'SuiviVenteBundle::header.html.twig' %}
+    {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Gestion Catégories
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('suivi_vente_admin') }}"><i class="glyphicon glyphicon-hand-right"></i> Accueil</a></li>
+                <li class="active">Gestion Catégories</li>
+                <li class="active">Liste</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                     
+                    <div class="box">
+
+                        <div class="box-body filterable">
+                            <div class="panel-heading">
+
+                                <div class="pull-right">
+                                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtrer</button>
+                                </div>
+                            </div>
+                             <h3>
+               Liste Catégories
+
+            </h3>
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+
+                                    <tr class="filters">
+
+                                        <th><input type="text" class="form-control" placeholder="Nom" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Description" disabled></th>
+                                        <th><input type="text" class="form-control" placeholder="Date création" disabled></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for entity in entities %}
+                                        <tr>
+                                            <td>{{ entity.nom }}</td>
+                                            <td>{{ entity.description }}</td>
+                                            <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                                            <td>
+
+                                              <a href="{{ path('categorie_show', { 'id': entity.id }) }}" data-toggle="modal" data-target="#myModal2" class="glyphicon glyphicon-search"></a>
+                                                
+                                                <a  href="{{ path('categorie_show', { 'id': entity.id }) }}"  data-toggle="modal" data-target="#myModal1" >M</a>
+                                                <a href="{{ path('categorie_delete', { 'id': entity.id }) }}" class="glyphicon glyphicon-trash" onClick="if (!confirm('vous voulez supprimer    ?')) {
+                                                                    return false;
+                                                                }"  ></a>
+                                                
+                                            </td>
+                                        </tr>
+
+                                    {% endfor %}
+                                </tbody>
+
+                            </table>
+
+                            <div class="navigation">
+                                {{ knp_pagination_render(entities) }}
+
+                            </div>
+                            <div class="btn-table">
+                                   <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal">Ajouter Catégorie</button>
+                                <a href="{{ path('PDF_categ') }}"> <button class="btn btn-primary pull-right" style="margin-right: 5px;"><i class="fa fa-download"></i> Generate PDF</button></a>  
+                             
+                            </div>
+
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->
+                    </div><!-- /.box -->
+                </div><!-- /.col -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="box-header">
+                                <h3 class="box-title"><strong style="color: #161617;">Ajout Catégorie</strong></h3>
+                            </div><!-- /.box-header -->
+                            {% if message %}
+                                <div class="alert alert-success">
+                                    <a href="#" class="close" data-dismiss="alert">{{ message }}&times;</a>
+                                </div>
+
+                            {% endif %}
+
+                            <!-- form start -->
+                            <form role="form" method="Post" action="{{path('categorie_create')}}" class="form-ajout">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="nom">Nom catégorie</label>
+                                        {{form_widget(form.nom,{'attr':{'class':'form-control'}})}}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+
+                                        {{form_widget(form.description,{'attr':{'class':'form-control'}})}}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="date">Date création</label>
+                                        {{form_widget(form.dateCreation, { 'attr': {'class': 'form-control'}}) }}
+                                    </div>
+                                    <div class="box-footer">
+                                        {{form_widget(form._token)}}
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                                        <button type="reset" value="Rénisialiser" class="btn btn-annuler">Annuler</button>
+                                        
+                                    </div>
+
+
+                                </div><!-- /.box -->
+                            </form><!---end-form--->
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-ferm" data-dismiss="modal"></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!---end-model-->
+                <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                        </div>
+                                                        <!-- /.modal-content -->
+                                                    </div>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+ 
+            </div>
+
+        </section>
+
+    </div><!-- ./wrapper -->       
+
+    {% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+
+
+{% endblock %}

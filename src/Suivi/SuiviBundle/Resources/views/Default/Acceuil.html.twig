@@ -1,0 +1,337 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+   
+    <title>Suivi Vente | Dashboard</title>
+
+      {% include 'SuiviVenteBundle::header.html.twig' %}
+      {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+	
+  
+        <section class="content-header">
+          <h1>
+          Tableau de bord 
+            
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="glyphicon glyphicon-hand-right"></i> Accueil</a></li>
+            <li class="active">Tableau de bord </li>
+          </ol>
+        </section>
+
+
+        <section class="content">
+          <!-- Info boxes -->
+          <!-- Profil Administrateur -->
+          <div class="row">
+              {% if is_granted('ROLE_SUPER_ADMIN') %}
+                  
+
+
+   
+
+
+       
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-paper-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Catégories</span>
+                  <span class="info-box-number">{{nbr1}}<small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+
+            <!-- fix for small devices only -->
+           
+
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="ion ion-ios-star-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Offres</span>
+                  <span class="info-box-number">{{nboffre}}</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Utilisateurs</span>
+                  <span class="info-box-number"> {{ nbreutil }}</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+			<div class="col-md-8">
+       <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Les offres Actives</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                         
+                          <th>Libellé</th>
+                          <th>Description</th>
+                          <th>Prix Unitaire</th>
+                           <th>Status</th>
+                            <th>Catégorie</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                           {% for o in offreS %}
+                        <tr>
+                          <td><a href="pages/examples/invoice.html">{{ o.nom }}</a></td>
+                          <td>{{ o.description}}</td>
+                          <td>{{ o.prixunitaire}}</td>
+                          
+                          <td><span class="label label-success">Active</span></td>
+                           <td>{{ o.categ.nom}}</td>
+                         
+                        </tr>
+                       
+                        {% endfor  %}
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                
+                  <a href="{{ path('offres') }}" class="btn btn-sm btn-info btn-flat pull-right">Toutes les Offres</a>
+                </div><!-- /.box-footer -->
+              </div>
+                </div>
+             
+                 
+                
+        
+          
+             <!-- Fin Profil Administrateur -->
+           
+       
+
+
+
+
+
+            {% endif %}
+            
+             <!-- Fin Profil Administrateur -->
+             
+              <!-- Profil CHEF -->
+             {%if is_granted('ROLE_CHEF') %}
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="ion ion-android-cart"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Ventes</span>
+                  <span class="info-box-number">{{nbr1}}<small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-blue"><i class="ion ion-social-euro"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Recettes</span>
+                  <span class="info-box-number">{{nbr1}}<small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+           
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-pie-graph"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Statistiques</span>
+                  <span class="info-box-number"><small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+             <div class="col-md-4">
+                      <p class="text-center">
+                        <strong>Objectif réalisée par mois</strong>
+                      </p>
+                      <div class="progress-group">
+                        <span class="progress-text">Fixe</span>
+                        <span class="progress-number"><b>160</b>/200</span>
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-aqua" style="width: 50%"></div>
+                        </div>
+                      </div><!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">Mobile</span>
+                        <span class="progress-number"><b>310</b>/400</span>
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                        </div>
+                      </div><!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">Transfert</span>
+                        <span class="progress-number"><b>480</b>/800</span>
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-green" style="width: 80%"></div>
+                        </div>
+                      </div><!-- /.progress-group -->
+                      <div class="progress-group">
+                        <span class="progress-text">3G</span>
+                        <span class="progress-number"><b>250</b>/500</span>
+                        <div class="progress sm">
+                          <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                        </div>
+                      </div><!-- /.progress-group -->
+                    
+         </div>
+                 {% endif %}
+                 
+                  <!-- Fin Profil Chef -->
+                  
+                  <!-- Profil Commercial -->
+             {%if is_granted('ROLE_COMMERCIAL') %}
+                 
+                 <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-red"><i class="ion ion-android-cart"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Contacts</span>
+                  <span class="info-box-number">{{nbr1}}<small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-blue"><i class="ion ion-social-euro"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Produits</span>
+                  <span class="info-box-number">{{nbr1}}<small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+           
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="ion ion-pie-graph"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Visites</span>
+                  <span class="info-box-number"><small></small></span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </div><!-- /.col -->
+            <div class="col-md-6">
+                 <div class="box box-danger">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Dérniers Contacts </h3>
+                      <div class="box-tools pull-right">
+                       
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Alexander Pierce</a>
+                          <span class="users-list-date">Today</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Norman</a>
+                          <span class="users-list-date">Yesterday</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Jane</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/admin.png")}}" alt="User Image">
+                          <a class="users-list-name" href="#">John</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li>
+                       
+                      </ul><!-- /.users-list -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer text-center">
+                      <a href="javascript::" class="uppercase">View All Users</a>
+                    </div><!-- /.box-footer -->
+                  </div>
+                </div>
+            
+            <div class="col-md-6">
+                 <div class="box box-success">
+                    <div class="box-header with-border">
+                      <h3 class="box-title">Dérniers Produits </h3>
+                      <div class="box-tools pull-right">
+                       
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                      </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body no-padding">
+                      <ul class="users-list clearfix">
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/cle.jpg")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Alexander Pierce</a>
+                          <span class="users-list-date">Today</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/3g.jpg")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Norman</a>
+                          <span class="users-list-date">Yesterday</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/cle.jpg")}}" alt="User Image">
+                          <a class="users-list-name" href="#">Jane</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li>
+                        <li>
+                          <img src="{{asset("bundles/adminTemplate/img/cle.jpg")}}" alt="User Image">
+                          <a class="users-list-name" href="#">John</a>
+                          <span class="users-list-date">12 Jan</span>
+                        </li>
+                       
+                      </ul><!-- /.users-list -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer text-center">
+                      <a href="javascript::" class="uppercase">View All Users</a>
+                    </div><!-- /.box-footer -->
+                  </div>
+                </div>
+                {% endif %} 
+                  <!-- Fin Profil Commercial -->
+           </div>
+
+         </div><!--fin-1--->
+
+  </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+	</section>
+ </div>
+
+
+{% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+    </div><!-- ./wrapper -->
+
+
+    {% endblock %}
+

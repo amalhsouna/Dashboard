@@ -1,0 +1,103 @@
+{% extends 'SuiviVenteBundle::layout.html.twig' %}
+{% block body %}
+
+<title>Suivi Vente | Dashboard</title>
+
+{% include 'SuiviVenteBundle::header.html.twig' %}
+  {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+   
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+          Gestion Contrats
+
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Gestion Contrats</li>
+            <li class="active">Ajouter</li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">Ajout Contrat</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+
+                <form role="form" method="Post" action="{{ path('contrat_ajout', { 'id': 1 }) }}">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="nom">Nom abonnée</label>
+                      {{form_widget(form.raisonSocial,{'attr':{'class':'form-control','value': form.type.vars.value|default(test)}}) }}
+
+                    </div>
+                    <div class="form-group">
+                      <label for="description">Numéro de CIN</label>
+
+                       {{form_widget(form.nCin,{'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Adresse</label>
+
+                     {{form_widget(form.adresse,{'attr':{'class':'form-control'}})}}
+                    </div>
+                     <div class="form-group">
+                      <label for="date">Ligne d'abonnement</label>
+
+                     {{form_widget(form.ligne,{'attr':{'class':'form-control'}})}}
+                    </div>
+                     <div class="form-group">
+                      <label for="date">Date début</label>
+
+                     {{form_widget(form.dateDebut)}}
+                    </div>
+                     <div class="form-group">
+                      <label for="date">Date fin</label>
+
+                     {{form_widget(form.dateFin)}}
+                    </div>
+                     <div class="form-group">
+                      <label for="date">Type de produits</label>
+
+                     {{form_widget(form.prod,{'attr':{'class':'form-control'}})}}
+                    </div>
+                    <div class="form-group">
+                      <label for="date">Montant de Forfait</label>
+
+                     {{form_widget(form.montantForfait,{'attr':{'class':'form-control'}})}}
+                    </div>
+                    
+               <div class="box-footer">
+                      {{form_widget(form._token)}}
+                    <button type="submit" class="btn btn-primary">Ajouter</button>
+
+                  </div>
+                       
+
+
+                            </form>
+              </div><!-- /.box -->
+</section>
+ </div>
+<script>
+date1 = new Date('2012-07-20 00:00:00');
+date2 = new Date('2012-10-29 22:16:57');
+diff = dateDiff(date1, date2);
+alert("Entre le "+date1.toString()+" et "+date2.toString()+" il y a "+diff.day+" jours, "+diff.hour+" heures, "+diff.min+" minutes et "+diff.sec+" secondes");
+</script>
+        {% include 'SuiviVenteBundle::footer.html.twig' %}
+
+
+
+        {% endblock %}
+

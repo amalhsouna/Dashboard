@@ -1,0 +1,13 @@
+{% extends 'BladeTesterCalendarBundle:Event:base.html.twig' %}
+
+{% block body %}
+    {% include 'SuiviVenteBundle::header.html.twig' %}
+    {% include 'SuiviVenteBundle::colonne-gauche.html.twig' %}
+    <div class="bloc-calender">
+<form id="event-add" method="POST" action="{{ url('calendar_event_add') }}?destination={{ app.request.get('destination') }}" {{ form_enctype(form) }}>
+    {% include 'BladeTesterCalendarBundle:Event:form.html.twig' %}
+    <input type="submit" value="{{ 'bladetester_calendar.label.event.add'|trans }}" /> 
+    {% include 'BladeTesterCalendarBundle:Event:cancel.html.twig' %}
+</form>
+    </div>
+{% endblock %}

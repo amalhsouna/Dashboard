@@ -1,0 +1,225 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+
+     
+         <ul class="sidebar-menu">
+            <li class="header">Menu Principale</li>
+            
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-tasks"></i> <span>Gestion Catégorie</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+                <li><a href="{{path('categorie')}}"><i class="fa fa-circle-o"></i> Liste Catégories</a></li>
+              
+              </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-shopping-cart"></i> <span>Gestion Offres</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+                <li><a href="{{path('offres')}}"><i class="fa fa-circle-o"></i> Liste Offres</a></li>
+             
+              </ul>
+            </li>
+		
+             <li class="treeview">
+              <a href="#">
+
+                <i class="fa fa-pie-chart"></i> <span>Statistiques</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{path('stat_admin')}}"><i class="fa fa-bar-chart"></i> Ventes</a></li>
+                <li><a href="#"><i class="fa fa-bar-chart"></i> Prospection</a></li>
+				<li><a href="#"><i class="fa fa-bar-chart"></i> Recouvrement</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+              <a href="#">
+                <i class="glyphicon glyphicon-user"></i><span>Gestion Utilisateurs</span>
+                <span></span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+               
+                  <li><a href="{{path('admin_listeadmin')}}"><i class="fa fa-users"></i>Liste Utilisateurs</a></li>
+		  <li><a href="{{path('fos_user_registration_register')}}"><i class="fa fa-user-plus"></i>Ajout Utilisateur</a></li>
+				   
+              </ul>
+            </li>
+             {% endif %}
+             {%if is_granted('ROLE_CHEF') %}
+         <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-shopping-cart"></i> <span> Ventes</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+                <li><a href="{{path('suivi_vente_chef')}}"><i class="fa fa-circle-o"></i> Ajout vente </a></li>
+                <li><a href="{{path('lite_vente_chef')}}"><i class="fa fa-circle-o"></i> Liste vente</a></li>
+              </ul>
+            </li>
+            
+              <li class="treeview">
+                <a href="#">
+                    <i class="ion-calculator"></i> <span> Recette</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('recette_liste')}}"><i class="fa fa-circle-o"></i> Recette par date</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="ion-calculator"></i> <span> Objectifs</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('recette_liste')}}"><i class="fa fa-circle-o"></i> Ajout objectif</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i> <span> Statistiques</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('stat_admin')}}"><i class="fa fa-circle-o"></i>Statistiques par semaine</a></li>
+              </ul>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('stat_bar')}}"><i class="fa fa-circle-o"></i>Statistiques par agences</a></li>
+              </ul>
+            </li>
+        
+          {% endif %}
+          
+          {%if is_granted('ROLE_RESPONSABLE') %}
+              
+               <li class="treeview">
+                <a href="#">
+                    <i class="glyphicon glyphicon-shopping-cart"></i> <span> Consulter Ventes</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('lite_vente_chef')}}"><i class="fa fa-circle-o"></i>Ventes</a></li>
+              </ul>
+             
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="ion ion-calendar"></i> <span> Calendrier</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+             
+              <ul class="treeview-menu">
+               
+                <li><a href="#"><i class="fa fa-circle-o"></i>Listes évenements</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="ion ion-briefcase"></i> <span> Recouvrements</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="#"><i class="fa fa-circle-o"></i>Listes des contrats</a></li>
+              </ul>
+              <ul class="treeview-menu">
+               
+                <li><a href="#"><i class="fa fa-circle-o"></i>Listes des crénaces</a></li>
+              </ul>
+            </li>
+             <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i> <span> Statistiques</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('stat_admin')}}"><i class="fa fa-circle-o"></i>Statistiques par semaine</a></li>
+              </ul>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('stat_bar')}}"><i class="fa fa-circle-o"></i>Statistiques par agences</a></li>
+              </ul>
+            </li>
+            {% endif %}
+            
+                 {%if is_granted('ROLE_COMMERCIAL') %}
+            <li class="treeview">
+                <a href="#">
+                    <i class="ion ion-android-contact"></i> <span> Contacts</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('contact_ajout')}}"><i class="fa fa-circle-o"></i>Ajout contact</a></li>
+              </ul>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('contact_liste')}}"><i class="fa fa-circle-o"></i>Liste des contacts</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="ion ion-ios-book"></i> <span> Catalogue Produits</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('produit_ajout')}}"><i class="fa fa-circle-o"></i>Ajout produits</a></li>
+              </ul>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('produit_liste')}}"><i class="fa fa-circle-o"></i>Liste produits</a></li>
+              </ul>
+            </li>
+            
+             <li class="treeview">
+                <a href="#">
+                    <i class="ion-ios-compose"></i> <span> Gestion contrats</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="#"><i class="fa fa-circle-o"></i>Ajout contrat</a></li>
+              </ul>
+             
+            </li>
+           
+             <li class="treeview">
+                <a href="{{path('calendar_index')}}">
+                    <i class="ion ion-calendar"></i> <span> Consulter calendrier</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+              <ul class="treeview-menu">
+               
+                <li><a href="{{path('calendar_index')}}"><i class="fa fa-circle-o"></i>Liste évenements</a></li>
+              </ul>
+             
+            </li>
+             {% endif %}
+            
+            
+            
+            
+         <li class="header">Option</li>
+            <li><a href="{{ path('fos_user_security_logout') }}"><i class="glyphicon glyphicon-log-out"></i>Déconnexion</a></li>
+        
+         
+    </section>
+    <!-- /.sidebar -->
+</aside>
