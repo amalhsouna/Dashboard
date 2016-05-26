@@ -35,14 +35,14 @@ class Produit
      */
     private $description;
 
- /**
+    /**
      * @var integer
      *
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
     
-     /**
+    /**
      * @ORM\OneToMany(targetEntity="Contrats", mappedBy="prod", cascade={"remove", "persist"})
      */
     protected $contrat;
