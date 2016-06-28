@@ -27,14 +27,7 @@
           <!-- Info boxes -->
           <!-- Profil Administrateur -->
           <div class="row">
-              {% if is_granted('ROLE_SUPER_ADMIN') %}
-                  
-
-
-   
-
-
-       
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
             <div class="col-md-3 col-sm-6 col-xs-12">
               <div class="info-box">
                 <span class="info-box-icon bg-aqua"><i class="ion ion-ios-paper-outline"></i></span>
@@ -113,18 +106,7 @@
                 </div><!-- /.box-footer -->
               </div>
                 </div>
-             
-                 
-                
-        
-          
              <!-- Fin Profil Administrateur -->
-           
-       
-
-
-
-
 
             {% endif %}
             
@@ -325,10 +307,7 @@
           </div><!-- /.row -->
 	</section>
  </div>
-
-
 {% include 'SuiviVenteBundle::footer.html.twig' %}
-
 
     </div><!-- ./wrapper -->
 
